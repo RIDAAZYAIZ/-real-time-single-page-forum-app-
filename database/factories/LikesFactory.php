@@ -2,11 +2,15 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model\Likes;
+use App\Model\Like;
+use App\Model\User as AppUser;
+use App\User;
 use Faker\Generator as Faker;
 
-$factory->define(Likes::class, function (Faker $faker) {
+$factory->define(Like::class, function (Faker $faker) {
     return [
-        //
+        'user_id' => function () {
+            return AppUser::all()->random();
+        }
     ];
 });
