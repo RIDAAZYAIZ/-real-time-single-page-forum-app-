@@ -6,8 +6,7 @@ use App\Http\Resources\QuestionResource;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class QuestionController extends Controller
 {
@@ -75,7 +74,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        
+        $question->update($request->all());
+        return response('Update',SymfonyResponse::HTTP_ACCEPTED);
     }
 
     /**
